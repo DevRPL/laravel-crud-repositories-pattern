@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
-use App\Models\Depertement;
+use App\Entities\Depertement;
 
 class DepertementsTableSeeder extends Seeder
 {
