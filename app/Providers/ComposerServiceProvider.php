@@ -18,6 +18,10 @@ class ComposerServiceProvider extends ServiceProvider
         view()->composer('depertement.*', function ($view) {
             $view->with('page', 'Depertements');
         });
+        view()->composer(
+            ['employee.create', 'employee.edit'],
+            'App\Http\ViewComposers\DepertementComposer'
+        );
     }
 
     /**
