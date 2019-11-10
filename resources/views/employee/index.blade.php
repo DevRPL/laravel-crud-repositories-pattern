@@ -30,7 +30,7 @@
                                     <td>{{ $employee->address }}</td>
                                     <td>{{ $employee->email }}</td>
                                     <td>{{ $employee->phone }}</td>
-                                    <td>{{ $employee->depertement->depertement_name }}</td>
+                                    <td>{{ $employee->department->name }}</td>
                                     <td>
                                         @component('shared.block.btn_icon_edit', [
                                             'route' => 'employees.edit',

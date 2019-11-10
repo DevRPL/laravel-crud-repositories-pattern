@@ -15,12 +15,12 @@ class ComposerServiceProvider extends ServiceProvider
         view()->composer('employee.*', function ($view) {
             $view->with('page', 'Employees');
         });
-        view()->composer('depertement.*', function ($view) {
-            $view->with('page', 'Depertements');
+        view()->composer('department.*', function ($view) {
+            $view->with('page', 'Department');
         });
         view()->composer(
             ['employee.create', 'employee.edit'],
-            'App\Http\ViewComposers\DepertementComposer'
+            'App\Http\ViewComposers\DepartmentComposer'
         );
     }
 

@@ -19,8 +19,8 @@ class ServiceServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(
-            \App\Services\Contracts\DepertementServiceContract::class,
-            \App\Services\DepertementService::class
+            \App\Services\Contracts\DepartmentServiceContract::class,
+            \App\Services\DepartmentService::class
         );
 
         $this->app->bind(

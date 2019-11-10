@@ -13,12 +13,12 @@ class CreateEmployeesTable extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('nik');
+            $table->string('nik');
             $table->string('name');
             $table->text('address');
             $table->string('email');
             $table->string('phone');
-            $table->integer('depertement_id')->unsigned();
+            $table->integer('department_id')->unsigned();
             $table->timestamps();
         });
     }

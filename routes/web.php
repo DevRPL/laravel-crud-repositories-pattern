@@ -11,13 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/', 'HomeController@index');
 Auth::routes();
 
 Route::resource('/employees', 'EmployeeController');
-Route::resource('/depertements', 'DepertementController');
+Route::resource('/departments', 'DepartmentController');
 
-Route::get('/home', 'HomeController@index')->name('home');

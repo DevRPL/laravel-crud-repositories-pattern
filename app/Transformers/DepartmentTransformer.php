@@ -10,7 +10,7 @@ use App\Entities\Depertement;
  *
  * @package namespace App\Transformers;
  */
-class DepertementTransformer extends TransformerAbstract
+class DepartmentTransformer extends TransformerAbstract
 {
     /**
      * Transform the Depertement entity.

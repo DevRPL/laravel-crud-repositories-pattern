@@ -37,12 +37,6 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
-                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('employees.index') }}">Employees</a>
-                        </li>
-                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('depertements.index') }}">Depertements</a>
-                        </li>
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -53,6 +47,12 @@
                                 </li>
                             @endif
                         @else
+                         <li class="nav-item">
+                            <a class="nav-link" href="{{ route('employees.index') }}">Employees</a>
+                        </li>
+                         <li class="nav-item">
+                            <a class="nav-link" href="{{ route('departments.index') }}">Depertements</a>
+                        </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>

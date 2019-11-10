@@ -3,28 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\DepertementCreateRequest;
-use App\Http\Requests\DepertementUpdateRequest;
-use App\Repositories\DepertementRepository;
+use App\Repositories\DepartmentRepository;
 
 /**
- * Class DepertementsController.
+ * Class DepartmentController.
  */
-class DepertementController extends Controller
+class DepartmentController extends Controller
 {
     /**
-     * @var DepertementRepository
+     * @var DepartmentRepository
      */
-    protected $depertement;
+    protected $department;
 
     /**
-     * DepertementsController constructor.
+     * DepartmentsController constructor.
      *
-     * @param DepertementRepository $repository
+     * @param DepartmentRepository $repository
      */
-    public function __construct(DepertementRepository $depertement)
+    public function __construct(DepartmentRepository $department)
     {
-        $this->depertement = $depertement;
+        $this->department = $department;
     }
 
     /**
@@ -34,9 +32,9 @@ class DepertementController extends Controller
      */
     public function index()
     {
-        $depertements = $this->depertement->all();
+        $departments = $this->department->all();
 
-        return view('depertement.index', compact('depertements'));
+        return view('department.index', compact('departments'));
     }
 
     /**
@@ -46,27 +44,26 @@ class DepertementController extends Controller
      */
     public function create()
     {
-        return view('depertement.create');
+        return view('department.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param DepertementCreateRequest $request
+     * @param Request $request
      *
      * @return \Illuminate\Http\Response
      *
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function store(DepertementCreateRequest $request)
+    public function store(Request $request)
     {
-        $depertement = $this->depertement->create($request->all());
+        $department = $this->department->create($request->all());
 
-        toastr_created();
         if ($request->input('action') == 'save') {
             return redirect()->back();
         } else {
-            return redirect()->route('depertements.index');
+            return redirect()->route('departments.index');
         }
     }
 
@@ -79,31 +76,30 @@ class DepertementController extends Controller
      */
     public function edit($id)
     {
-        $depertement = $this->depertement->find($id);
+        $department = $this->department->find($id);
 
-        return view('depertement.edit', compact('depertement'));
+        return view('department.edit', compact('department'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param DepertementUpdateRequest $request
+     * @param Request $request
      * @param string                   $id
      *
      * @return Response
      *
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function update(DepertementUpdateRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $data = $request->except('_token', '_method');
-        $depertement = $this->depertement->update($data, $id);
+        $this->department->update($data, $id);
 
-        toastr_updated();
-        if ($request->input('action') == 'save') {
+        if ($request->input('action') == 'update') {
             return redirect()->back();
         } else {
-            return redirect()->route('depertements.index');
+            return redirect()->route('departments.index');
         }
     }
 
@@ -116,9 +112,7 @@ class DepertementController extends Controller
      */
     public function destroy($id)
     {
-        $delete = $this->brand->delete($id);
-
-        toastr_deleted();
+        $this->department->delete($id);
 
         return redirect()->back();
     }

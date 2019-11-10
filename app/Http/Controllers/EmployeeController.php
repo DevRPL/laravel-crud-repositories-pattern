@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\EmployeeCreateRequest;
-use App\Http\Requests\EmployeeUpdateRequest;
 use App\Repositories\EmployeeRepository;
+use App\Services\Contracts\EmployeeServiceContract;
 
 /**
  * Class employeesController.
@@ -22,7 +21,7 @@ class EmployeeController extends Controller
      *
      * @param EmployeeRepository $repository
      */
-    public function __construct(EmployeeRepository $employee)
+    public function __construct(EmployeeServiceContract $employee)
     {
         $this->employee = $employee;
     }
@@ -52,17 +51,16 @@ class EmployeeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param EmployeeCreateRequest $request
+     * @param Request $request
      *
      * @return \Illuminate\Http\Response
      *
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function store(EmployeeCreateRequest $request)
+    public function store(Request $request)
     {
         $employee = $this->employee->create($request->all());
 
-        toastr_created();
         if ($request->input('action') == 'save') {
             return redirect()->back();
         } else {
@@ -87,19 +85,18 @@ class EmployeeController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param EmployeeUpdateRequest $request
+     * @param Request $request
      * @param string                $id
      *
      * @return Response
      *
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function update(EmployeeUpdateRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $data = $request->except('_token', '_method');
         $employee = $this->employee->update($data, $id);
 
-        toastr_updated();
         if ($request->input('action') == 'save') {
             return redirect()->back();
         } else {
@@ -117,9 +114,7 @@ class EmployeeController extends Controller
     public function destroy($id)
     {
         $delete = $this->employee->delete($id);
-
-        toastr_deleted();
-
+        
         return redirect()->back();
     }
 }

@@ -4,16 +4,16 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDepertementsTable extends Migration
+class CreateDepartmentsTable extends Migration
 {
     /**
      * Run the migrations.
      */
     public function up()
     {
-        Schema::create('depertements', function (Blueprint $table) {
+        Schema::create('departments', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('depertement_name');
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -23,6 +23,6 @@ class CreateDepertementsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('depertements');
+        Schema::dropIfExists('departments');
     }
 }

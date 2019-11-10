@@ -4,16 +4,16 @@ namespace App\Repositories;
 
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use App\Repositories\DepertementRepository;
-use App\Entities\Depertement;
-use App\Validators\DepertementValidator;
+use App\Repositories\DepartmentRepository;
+use App\Entities\Department;
+use App\Validators\DepartmentValidator;
 
 /**
- * Class DepertementRepositoryEloquent.
+ * Class DepartmentRepositoryEloquent.
  *
  * @package namespace App\Repositories;
  */
-class DepertementRepositoryEloquent extends BaseRepository implements DepertementRepository
+class DepartmentRepositoryEloquent extends BaseRepository implements DepartmentRepository
 {
     /**
      * Specify Model class name
@@ -22,7 +22,7 @@ class DepertementRepositoryEloquent extends BaseRepository implements Depertemen
      */
     public function model()
     {
-        return Depertement::class;
+        return Department::class;
     }
 
     /**
@@ -33,7 +33,7 @@ class DepertementRepositoryEloquent extends BaseRepository implements Depertemen
     public function validator()
     {
 
-        return DepertementValidator::class;
+        return DepartmentValidator::class;
     }
 
 

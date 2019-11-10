@@ -13,19 +13,17 @@ class Employee extends Model implements Transformable
 {
     use TransformableTrait;
 
-    protected $table = 'employees';
-
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'nik', 'name', 'address', 'email', 'phone', 'depertement_id', 'created_at', 'updated_at',
+        'nik','name','address','email','phone','department_id'
     ];
-
-    public function depertement()
+    
+    public function department()
     {
-        return $this->belongsTo(Depertement::class);
+        return $this->belongsTo(Department::class);
     }
 }

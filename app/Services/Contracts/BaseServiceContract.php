@@ -53,4 +53,5 @@ interface BaseServiceContract
      * @return int
      */
     public function delete($id);
+    
 }

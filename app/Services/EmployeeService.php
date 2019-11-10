@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Entities\Employee;
 use App\Repositories\EmployeeRepository;
 use App\Services\Contracts\EmployeeServiceContract;
 
@@ -36,6 +37,11 @@ class EmployeeService implements EmployeeServiceContract
 
     public function delete($id)
     {
-        return $this->employee->find($id)->update($attributes);
+        return $this->employee->find($id);
+    }
+
+    public function countEmployeeAllDepartment()
+    {
+        return $this->employee->countEmployeeAllDepartment();
     }
 }

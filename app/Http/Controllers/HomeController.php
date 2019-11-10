@@ -2,18 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Services\Contracts\EmployeeServiceContract;
 
 class HomeController extends Controller
 {
+    protected $employee;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(EmployeeServiceContract $employee)
     {
         $this->middleware('auth');
+        $this->employee = $employee;
     }
 
     /**
@@ -23,6 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $count_employees = $this->employee->countEmployeeAllDepartment();
+        
+        return view('home', compact('count_employees'));
     }
 }

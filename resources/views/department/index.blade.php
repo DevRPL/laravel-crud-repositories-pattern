@@ -3,35 +3,35 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-12">
+        <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Manage {{ $page }}</div>
     
                 <div class="card-body">
-                    @component('shared.block.btn_create', ['route' => 'employees.create']) 
+                    @component('shared.block.btn_create', ['route' => 'departments.create']) 
                     @endcomponent
                     
                     <table id="example" class="table table-striped table-bordered" style="width:100%">
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Depertement Name</th>
+                                <th>Department Name</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($depertements as $no => $depertement)
+                            @forelse ($departments as $no => $department)
                                 <tr>
                                     <td>{{ $no +1 }}</td>
-                                    <td>{{ $depertement->depertement_name }}</td>
+                                    <td>{{ $department->name }}</td>
                                     <td>
                                         @component('shared.block.btn_icon_edit', [
-                                            'route' => 'depertements.edit',
-                                            'params' => ['id' => $depertement->id]
+                                            'route' => 'departments.edit',
+                                            'params' => ['id' => $department->id]
                                         ]) @endcomponent
                                             @component('shared.block.btn_icon_delete', [
-                                            'route' => 'depertements.destroy',
-                                            'params' => ['id' => $depertement->id]
+                                            'route' => 'departments.destroy',
+                                            'params' => ['id' => $department->id]
                                         ]) @endcomponent
                                     </td>
                                 </tr>

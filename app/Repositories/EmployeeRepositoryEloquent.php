@@ -44,5 +44,13 @@ class EmployeeRepositoryEloquent extends BaseRepository implements EmployeeRepos
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
+
+    public function countEmployeeAllDepartment()
+    {
+        return $this->model
+            ->selectRaw('count(*) as total_employee, department_id')
+            ->groupBy('department_id')
+            ->get();
+    }
     
 }
