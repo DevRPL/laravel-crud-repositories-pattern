@@ -37,7 +37,7 @@ class EmployeeController extends Controller
 
         return view('employee.index', compact('employees'));
     }
-
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -59,7 +59,7 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        $employee = $this->employee->create($request->all());
+        $this->employee->create($request->all());
 
         if ($request->input('action') == 'save') {
             return redirect()->back();
@@ -95,8 +95,8 @@ class EmployeeController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->except('_token', '_method');
-        $employee = $this->employee->update($data, $id);
-
+        $this->employee->update($data, $id);
+        
         if ($request->input('action') == 'save') {
             return redirect()->back();
         } else {
@@ -113,7 +113,7 @@ class EmployeeController extends Controller
      */
     public function destroy($id)
     {
-        $delete = $this->employee->delete($id);
+        $this->employee->delete($id);
         
         return redirect()->back();
     }
